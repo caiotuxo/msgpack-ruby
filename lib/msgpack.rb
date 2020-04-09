@@ -19,6 +19,7 @@ require "msgpack/symbol"
 require "msgpack/core_ext"
 require "msgpack/timestamp"
 require "msgpack/time"
+require "mongoid"
 
 module MessagePack
   DefaultFactory = MessagePack::Factory.new

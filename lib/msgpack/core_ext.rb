@@ -1,3 +1,5 @@
+require "mongoid"
+
 module MessagePack
   module CoreExt
     def to_msgpack(packer_or_io = nil)
@@ -11,6 +13,16 @@ module MessagePack
         MessagePack.pack(self)
       end
     end
+  end
+end
+
+class BSON::ObjectId
+  include MessagePack::CoreExt
+
+  private
+  def to_msgpack_with_packer(packer)
+    packer.write_nil
+    packer
   end
 end
 
